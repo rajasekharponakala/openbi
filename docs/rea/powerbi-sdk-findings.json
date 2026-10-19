@@ -1,0 +1,295 @@
+{
+ "tool": "REA analyze-javascript-application",
+ "packages": {
+  "powerbi-client-2.25.0": {
+   "evidence_id": "ev_a3bc137f17eaa610c50ff8728c5ff2ad5c9123ef125f5df7fe269457270f75b2",
+   "artifact_sha256": "ad4887278c565569b0a2e6958d7a720b122850dbf1fde3b65bfd2873058cb962",
+   "confidence": "derived",
+   "authority": "shipped-artifact",
+   "statistics": {
+    "relevant_files": 5,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 1561362,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 3,
+    "skipped_javascript_files": 0,
+    "visited_ast_nodes": 128091,
+    "findings": 556,
+    "modules": 54,
+    "parse_failures": 0
+   },
+   "enums": {}
+  },
+  "powerbi-models-2.2.0": {
+   "evidence_id": "ev_93b00528736baa2a5dae8e456c8783b07128d6bb10f1f6df2c31804474fdc6eb",
+   "artifact_sha256": "32fbe2624153991834915933b42c86e29f2a8e2f449826a4169fd1c7f8f3226d",
+   "confidence": "derived",
+   "authority": "shipped-artifact",
+   "statistics": {
+    "relevant_files": 5,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 729169,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 3,
+    "skipped_javascript_files": 0,
+    "visited_ast_nodes": 60378,
+    "findings": 295,
+    "modules": 0,
+    "parse_failures": 0
+   },
+   "enums": {
+    "AggregateFunction": [
+     "Average",
+     "Count",
+     "Default",
+     "DistinctCount",
+     "Max",
+     "Min",
+     "None",
+     "Sum"
+    ],
+    "BookmarksPlayMode": [
+     "Off",
+     "Presentation"
+    ],
+    "CredentialType": [
+     "Anonymous",
+     "NoConnection",
+     "OnBehalfOf"
+    ],
+    "DataCacheMode": [
+     "DirectQuery",
+     "Import"
+    ],
+    "ExportDataResultFormat": [
+     "Csv",
+     "Xlsx"
+    ],
+    "ExportDataType": [
+     "Summarized",
+     "Underlying"
+    ],
+    "FilterType": [
+     "Advanced",
+     "Basic",
+     "Hierarchy",
+     "HierarchyIdentity",
+     "Identity",
+     "IncludeExclude",
+     "RelativeDate",
+     "RelativeTime",
+     "TopN",
+     "Tuple",
+     "Unknown"
+    ],
+    "FiltersLevel": [
+     "Page",
+     "Report",
+     "Visual"
+    ],
+    "FiltersOperations": [
+     "Add",
+     "RemoveAll",
+     "Replace",
+     "ReplaceAll"
+    ],
+    "LayoutType": [
+     "Custom",
+     "Master",
+     "MobileLandscape",
+     "MobilePortrait"
+    ],
+    "PageSizeType": [
+     "Cortana",
+     "Custom",
+     "Letter",
+     "Mobile",
+     "Standard",
+     "Widescreen"
+    ],
+    "Permissions": [
+     "All",
+     "Copy",
+     "Create",
+     "Read",
+     "ReadWrite"
+    ],
+    "RelativeDateFilterTimeUnit": [
+     "CalendarMonths",
+     "CalendarWeeks",
+     "CalendarYears",
+     "Days",
+     "Hours",
+     "Minutes",
+     "Months",
+     "Weeks",
+     "Years"
+    ],
+    "RelativeDateOperators": [
+     "InLast",
+     "InNext",
+     "InThis"
+    ],
+    "SortDirection": [
+     "Ascending",
+     "Descending"
+    ],
+    "TokenType": [
+     "Aad",
+     "Embed"
+    ],
+    "ViewMode": [
+     "Edit",
+     "View"
+    ],
+    "VisualDataRoleKind": [
+     "Grouping",
+     "GroupingOrMeasure",
+     "Measure"
+    ]
+   }
+  },
+  "powerbi-visuals-api-5.11.1": {
+   "evidence_id": "ev_f700f88be79067031901b3b65ddab57e4a36bc2bffcf32656b32c17c2f678db1",
+   "artifact_sha256": "7c23fd6b6d910eb843098134305ed9d1697289c4d2e93cbec5eb6873c866bb29",
+   "confidence": "derived",
+   "authority": "shipped-artifact",
+   "statistics": {
+    "relevant_files": 10,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 182380,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 5,
+    "skipped_javascript_files": 0,
+    "visited_ast_nodes": 7923,
+    "findings": 302,
+    "modules": 0,
+    "parse_failures": 0
+   },
+   "enums": {}
+  }
+ },
+ "embed_routes": [
+  "/dashboard/load",
+  "/dashboard/prepare",
+  "/dashboards/:uniqueId/events/:eventName",
+  "/report/addPage",
+  "/report/bookmarks",
+  "/report/bookmarks/applyByName",
+  "/report/bookmarks/applyState",
+  "/report/bookmarks/capture",
+  "/report/bookmarks/play",
+  "/report/clearSelectedVisuals/",
+  "/report/create",
+  "/report/filters",
+  "/report/isUserStateApplied",
+  "/report/load",
+  "/report/pages",
+  "/report/pages/",
+  "/report/prepare",
+  "/report/render",
+  "/report/theme",
+  "/report/userState",
+  "/report/zoom",
+  "/reports/",
+  "/reports/:uniqueId/events/:eventName",
+  "/reports/:uniqueId/pages/:pageName/events/:eventName",
+  "/reports/:uniqueId/pages/:pageName/visuals/:visualName/events/:eventName",
+  "/visuals",
+  "/visuals/"
+ ],
+ "embed_events": [
+  [
+   "tileClicked",
+   "error"
+  ],
+  [],
+  [
+   "loaded",
+   "saved",
+   "rendered",
+   "saveAsTriggered",
+   "error",
+   "dataSelected",
+   "buttonClicked",
+   "info"
+  ],
+  [
+   "loaded",
+   "visualRendered"
+  ],
+  [
+   "filtersApplied",
+   "pageChanged",
+   "commandTriggered",
+   "swipeStart",
+   "swipeEnd",
+   "bookmarkApplied",
+   "dataHyperlinkClicked",
+   "visualRendered",
+   "visualClicked",
+   "selectionChanged",
+   "renderingStarted",
+   "blur",
+   "exportDataCompleted"
+  ],
+  [
+   "tileClicked",
+   "tileLoaded"
+  ]
+ ],
+ "filter_schemas": [
+  "http://powerbi.com/product/schema#advanced",
+  "http://powerbi.com/product/schema#basic",
+  "http://powerbi.com/product/schema#hierarchy",
+  "http://powerbi.com/product/schema#hierarchyIdentity",
+  "http://powerbi.com/product/schema#identity",
+  "http://powerbi.com/product/schema#includeExclude",
+  "http://powerbi.com/product/schema#notSupported",
+  "http://powerbi.com/product/schema#pageSelector",
+  "http://powerbi.com/product/schema#relativeDate",
+  "http://powerbi.com/product/schema#relativeTime",
+  "http://powerbi.com/product/schema#slicerTargetSelector",
+  "http://powerbi.com/product/schema#topN",
+  "http://powerbi.com/product/schema#tuple",
+  "http://powerbi.com/product/schema#visualSelector",
+  "http://powerbi.com/product/schema#visualTypeSelector"
+ ],
+ "filter_type_values": {
+  "Advanced": 0,
+  "Basic": 1,
+  "Unknown": 2,
+  "IncludeExclude": 3,
+  "RelativeDate": 4,
+  "TopN": 5,
+  "Tuple": 6,
+  "RelativeTime": 7,
+  "Identity": 8,
+  "Hierarchy": 9,
+  "HierarchyIdentity": 10
+ },
+ "visual_capabilities_properties": [
+  "privileges",
+  "dataRoles",
+  "dataViewMappings",
+  "objects",
+  "tooltips",
+  "sorting",
+  "drilldown",
+  "expandCollapse",
+  "suppressDefaultTitle",
+  "supportsKeyboardFocus",
+  "supportsHighlight",
+  "supportsSynchronizingFilterState",
+  "advancedEditModeSupport",
+  "supportsLandingPage",
+  "supportsEmptyDataView",
+  "supportsMultiVisualSelection",
+  "subtotals",
+  "migration",
+  "keepAllMetadataColumns",
+  "dataReductionCustomization",
+  "supportsOnObjectFormatting",
+  "enablePointerEventsFormatMode"
+ ]
+}

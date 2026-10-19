@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Embed example</title>
+  <style>
+    body { font: 14px system-ui, sans-serif; margin: 0; display: grid; grid-template-columns: 320px 1fr; height: 100vh; }
+    aside { padding: 14px; border-right: 1px solid #ddd; overflow: auto; }
+    textarea, input { width: 100%; box-sizing: border-box; font: 12px ui-monospace, monospace; }
+    button { margin: 3px 3px 3px 0; }
+    #log { font: 12px ui-monospace, monospace; white-space: pre-wrap; background: #f6f8fa; padding: 6px; max-height: 260px; overflow: auto; }
+    #report { height: 100vh; }
+  </style>
+  <script src="/static/vendor/penpal.min.js"></script>
+  <script src="/static/openbi-embed.js"></script>
+</head>
+<body>
+  <aside>
+    <h3>Host application</h3>
+    <p>Generate a token in OpenBI (report → <b>Embed</b>) or with
+      <code>POST /api/reports/{id}/embed-token</code>, then paste it here.</p>
+    <label>Embed URL</label><input id="url" value="/embed/report/1">
+    <label>Embed token</label><textarea id="token" rows="4"></textarea>
+    <button id="go">Embed</button>
+    <h4>API</h4>
+    <button id="pages">getPages()</button>
+    <button id="next">setPage(next)</button><br>
+    <button id="f2024">setFilters(Year = 2024)</button>
+    <button id="clear">removeFilters()</button>
+    <h4>Events</h4>
+    <div id="log"></div>
+  </aside>
+  <div id="report"></div>
+  <script>
+    let report;
+    const log = (m) => { const el = document.getElementById("log"); el.textContent = m + "\n" + el.textContent; };
+    document.getElementById("go").onclick = () => {
+      report = openbi.embed(document.getElementById("report"), {
+        embedUrl: document.getElementById("url").value,
+        accessToken: document.getElementById("token").value.trim(),
+        settings: { filterPaneEnabled: true, navContentPaneEnabled: true },
+      });
+      ["loaded", "rendered", "pageChanged", "dataSelected", "filtersApplied", "error"].forEach((e) =>
+        report.on(e, (ev) => log(`${e}: ${JSON.stringify(ev.detail).slice(0, 300)}`)));
+    };
+    document.getElementById("pages").onclick = async () => log("pages: " + JSON.stringify(await report.getPages()));
+    document.getElementById("next").onclick = async () => {
+      const pages = await report.getPages();
+      const i = pages.findIndex((p) => p.isActive);
+      await report.setPage(pages[(i + 1) % pages.length].name);
+    };
+    document.getElementById("f2024").onclick = () => report.setFilters([openbi.models.basicFilter("Date", "Year", [2024])]);
+    document.getElementById("clear").onclick = () => report.removeFilters();
+  </script>
+</body>
+</html>
