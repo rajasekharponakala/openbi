@@ -52,8 +52,8 @@ These live in version control:
 - `.github/ISSUE_TEMPLATE/`: bug and feature forms that apply `type:` and `status: needs-triage`
 - `.github/dependabot.yml`: dependency updates labelled `dependencies`
 
-`.github/workflows/repo-settings.yml` applies them on pushes to `main` that
-change these files, or when run manually. The workflow's `GITHUB_TOKEN`
+`.github/workflows/repo-settings.yml` applies them on pushes to the default
+branch that change these files, or when run manually. The workflow's `GITHUB_TOKEN`
 syncs the labels.
 
 Changing the description and topics needs administration rights, which

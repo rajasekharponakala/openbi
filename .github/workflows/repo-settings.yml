@@ -10,7 +10,6 @@ name: Repository settings
 
 on:
   push:
-    branches: [main]
     paths: [".github/labels.yml", ".github/repo.yml", ".github/workflows/repo-settings.yml"]
   workflow_dispatch:
 
@@ -20,6 +19,8 @@ permissions:
 
 jobs:
   labels:
+    # only the default branch defines the repository's settings
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +30,7 @@ jobs:
           delete-other-labels: false
 
   metadata:
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
