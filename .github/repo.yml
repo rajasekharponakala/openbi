@@ -1,0 +1,21 @@
+# Repository metadata, applied by .github/workflows/repo-settings.yml
+description: >-
+  Open-source business intelligence (a Power BI alternative): Power Query-style data prep,
+  DAX semantic models on DuckDB, interactive reports, row-level security, scheduled refresh and embedding.
+homepage: https://github.com/rajasekharponakala/openbi#readme
+topics:
+  - business-intelligence
+  - power-bi-alternative
+  - analytics
+  - dashboards
+  - reporting
+  - data-visualization
+  - dax
+  - semantic-layer
+  - duckdb
+  - echarts
+  - fastapi
+  - embedded-analytics
+  - row-level-security
+  - self-hosted
+  - open-source

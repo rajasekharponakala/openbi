@@ -19,6 +19,23 @@ def _settings(home: Path | None):
     return Settings.from_env(home)
 
 
+def _version(value: bool) -> None:
+    if value:
+        from . import __version__
+
+        typer.echo(f"openbi {__version__}")
+        raise typer.Exit()
+
+
+@app.callback()
+def main(
+    version: bool = typer.Option(
+        False, "--version", "-V", callback=_version, is_eager=True, help="Show the version and exit."
+    ),
+) -> None:
+    """OpenBI - open-source business intelligence."""
+
+
 @app.command()
 def serve(
     host: str = typer.Option("127.0.0.1", help="Bind address"),

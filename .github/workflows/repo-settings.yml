@@ -1,0 +1,50 @@
+name: Repository settings
+
+# Applies .github/labels.yml (labels) and .github/repo.yml (description, homepage,
+# topics) so repository metadata lives in version control.
+#
+# Labels use the built-in GITHUB_TOKEN. Description and topics need repository
+# administration rights, which GITHUB_TOKEN never has: create a fine-grained
+# personal access token with "Administration: read and write" on this repository
+# and store it as the secret REPO_ADMIN_TOKEN. Without it that step is skipped.
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/labels.yml", ".github/repo.yml", ".github/workflows/repo-settings.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: EndBug/label-sync@v2
+        with:
+          config-file: .github/labels.yml
+          delete-other-labels: false
+
+  metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply description, homepage and topics
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::REPO_ADMIN_TOKEN is not set; skipping description/topics (labels were still synced)."
+            exit 0
+          fi
+          description=$(yq -r '.description' .github/repo.yml)
+          homepage=$(yq -r '.homepage' .github/repo.yml)
+          gh repo edit "$GITHUB_REPOSITORY" --description "$description" --homepage "$homepage"
+          topics=$(yq -r '.topics | join(",")' .github/repo.yml)
+          gh api -X PUT "repos/$GITHUB_REPOSITORY/topics" -H "Accept: application/vnd.github+json" \
+            --input <(yq -o=json '{"names": .topics}' .github/repo.yml)
+          echo "Applied: $description"
+          echo "Topics: $topics"

@@ -1,0 +1,42 @@
+# nFPM config: wraps the PyInstaller binary into .deb and .rpm packages.
+#   (stage the binary at build/linux/openbi first)
+#   VERSION=0.1.0 ARCH=amd64 nfpm package -f packaging/nfpm.yaml -p deb -t dist/
+name: openbi
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+section: misc
+priority: optional
+maintainer: OpenBI contributors <ponakala928@gmail.com>
+description: |
+  Open-source business intelligence: Power Query-style data preparation,
+  semantic models with DAX measures, interactive reports, row-level security,
+  scheduled refresh and embedding. Runs as a web service (systemd unit
+  `openbi.service`, port 8000) and as a CLI (`openbi`).
+vendor: OpenBI
+homepage: https://github.com/rajasekharponakala/openbi
+license: AGPL-3.0-only
+contents:
+  - src: build/linux/openbi   # staged PyInstaller binary
+    dst: /usr/bin/openbi
+    file_info:
+      mode: 0755
+  - src: packaging/linux/openbi.service
+    dst: /usr/lib/systemd/system/openbi.service
+  - src: packaging/linux/openbi.env
+    dst: /etc/openbi/openbi.env
+    type: config|noreplace
+    file_info:
+      mode: 0640
+  - src: LICENSE
+    dst: /usr/share/doc/openbi/LICENSE
+  - src: README.md
+    dst: /usr/share/doc/openbi/README.md
+  - dst: /var/lib/openbi
+    type: dir
+    file_info:
+      mode: 0750
+scripts:
+  preinstall: packaging/linux/preinstall.sh
+  postinstall: packaging/linux/postinstall.sh
+  preremove: packaging/linux/preremove.sh

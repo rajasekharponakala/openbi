@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest a capability (e.g. a Power BI feature OpenBI lacks)
+labels: ["type: feature", "status: needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes: { label: Problem or use case }
+    validations: { required: true }
+  - type: textarea
+    id: proposal
+    attributes: { label: Proposed solution, description: "Is there an existing open-source library that could provide it? See docs/foss-decisions.md." }
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [DAX / engine, Power Query / data sources, Reports / visuals, Service / API, Security / RLS, Embedding, Packaging, Other]

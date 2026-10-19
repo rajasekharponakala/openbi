@@ -1,0 +1,37 @@
+# Issue/PR labels, synced by .github/workflows/repo-settings.yml (EndBug/label-sync)
+# Type
+- { name: "type: bug", color: "d73a4a", description: "Something isn't working" }
+- { name: "type: feature", color: "a2eeef", description: "New capability" }
+- { name: "type: enhancement", color: "84b6eb", description: "Improvement to an existing feature" }
+- { name: "type: docs", color: "0075ca", description: "Documentation" }
+- { name: "type: question", color: "d876e3", description: "Further information is requested" }
+- { name: "type: security", color: "b60205", description: "Security issue or hardening" }
+- { name: "type: performance", color: "fbca04", description: "Speed or memory" }
+- { name: "type: refactor", color: "c5def5", description: "Code change without behaviour change" }
+- { name: "breaking-change", color: "e11d21", description: "Changes public behaviour, formats or APIs" }
+# Area (applied automatically to PRs by .github/labeler.yml)
+- { name: "area: dax-engine", color: "5319e7", description: "DAX parser, filter-context engine, query planner" }
+- { name: "area: power-query", color: "5319e7", description: "Sources, applied steps, refresh" }
+- { name: "area: reports-ui", color: "5319e7", description: "Report canvas, visuals, designer, web app" }
+- { name: "area: service-api", color: "5319e7", description: "REST API, workspaces, refresh scheduling" }
+- { name: "area: security-rls", color: "5319e7", description: "Authentication, permissions, row-level security" }
+- { name: "area: embedding", color: "5319e7", description: "Embed tokens and the JavaScript SDK" }
+- { name: "area: packaging", color: "5319e7", description: "exe, deb, rpm, Docker, wheels" }
+- { name: "area: ci", color: "5319e7", description: "GitHub Actions" }
+- { name: "area: docs", color: "5319e7", description: "docs/ and README" }
+- { name: "area: tests", color: "5319e7", description: "Test suite" }
+# Priority
+- { name: "priority: critical", color: "b60205", description: "Data loss, security or outage" }
+- { name: "priority: high", color: "d93f0b", description: "Should be fixed in the next release" }
+- { name: "priority: medium", color: "fbca04", description: "Normal priority" }
+- { name: "priority: low", color: "0e8a16", description: "Nice to have" }
+# Status / triage
+- { name: "status: needs-triage", color: "ededed", description: "Not yet reviewed" }
+- { name: "status: confirmed", color: "c2e0c6", description: "Reproduced or accepted" }
+- { name: "status: blocked", color: "000000", description: "Waiting on something else" }
+- { name: "good first issue", color: "7057ff", description: "Good for newcomers" }
+- { name: "help wanted", color: "008672", description: "Extra attention is needed" }
+- { name: "duplicate", color: "cfd3d7", description: "This issue or pull request already exists" }
+- { name: "wontfix", color: "ffffff", description: "This will not be worked on" }
+- { name: "dependencies", color: "0366d6", description: "Dependency updates" }
+- { name: "release", color: "1d76db", description: "Release preparation" }

@@ -1,5 +1,9 @@
 # OpenBI
 
+[![CI](https://github.com/rajasekharponakala/openbi/actions/workflows/ci.yml/badge.svg)](https://github.com/rajasekharponakala/openbi/actions/workflows/ci.yml)
+[![Release](https://github.com/rajasekharponakala/openbi/actions/workflows/release.yml/badge.svg)](https://github.com/rajasekharponakala/openbi/actions/workflows/release.yml)
+[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
+
 **An open-source rebuild of the Power BI workflow.** You get data, transform
 it with applied steps, model it with relationships and DAX measures, build
 interactive reports, then share, secure (row-level security), schedule
@@ -24,7 +28,27 @@ showed about its public client contracts. [docs/foss-decisions.md](docs/foss-dec
 explains why each piece is an existing open-source library, following the
 [foss-mind](https://gitlab.com/ranjithraj/foss-agent-skills) skill.
 
-## Quick start
+## Install
+
+Each [release](https://github.com/rajasekharponakala/openbi/releases) ships:
+
+| Platform | Package |
+|---|---|
+| Windows | `openbi-<version>-windows-x86_64-setup.exe` (installer with Start-menu entries) or the portable `openbi-<version>-windows-x86_64.exe` |
+| Debian / Ubuntu | `sudo apt install ./openbi_<version>_amd64.deb` (or `_arm64`), then `sudo systemctl enable --now openbi` |
+| Fedora / RHEL / SUSE | `sudo dnf install ./openbi-<version>-1.x86_64.rpm` (or `.aarch64`) |
+| macOS | `openbi-<version>-macos-arm64.tar.gz` / `-macos-x86_64.tar.gz` (single binary) |
+| Any Linux | `openbi-<version>-linux-x86_64.tar.gz` / `-linux-arm64.tar.gz` |
+| Python | `pip install openbi-<version>-py3-none-any.whl` |
+| Docker | `docker run -p 8000:8000 ghcr.io/rajasekharponakala/openbi` |
+
+The `.deb`/`.rpm` packages install `/usr/bin/openbi`, a hardened systemd unit
+(`openbi.service`, running as the `openbi` system user), settings in
+`/etc/openbi/openbi.env` and data in `/var/lib/openbi`. Create the first
+administrator with
+`sudo -u openbi OPENBI_HOME=/var/lib/openbi openbi create-user you@example.com --admin`.
+
+## Quick start (from source)
 
 ```bash
 python -m venv .venv && . .venv/bin/activate
@@ -137,7 +161,11 @@ pip install -e ".[dev]"
 pytest -q                 # engine results are checked against hand-written SQL
 ruff check openbi tests && ruff format --check openbi tests
 scripts/analyze-powerbi-sdk.sh   # re-run the REA analysis of the Power BI client packages
+pyinstaller packaging/openbi.spec  # build the single-file executable into dist/
 ```
+
+Releases, packaging and the repository labels are described in
+[docs/releasing.md](docs/releasing.md).
 
 ## License
 

@@ -1,0 +1,23 @@
+# Path-based PR labels (actions/labeler v5)
+"area: dax-engine":
+  - changed-files: [{ any-glob-to-any-file: ["openbi/dax/**", "openbi/engine/**"] }]
+"area: power-query":
+  - changed-files: [{ any-glob-to-any-file: ["openbi/powerquery/**", "openbi/model/**"] }]
+"area: reports-ui":
+  - changed-files: [{ any-glob-to-any-file: ["openbi/web/**"] }]
+"area: service-api":
+  - changed-files: [{ any-glob-to-any-file: ["openbi/service/**", "openbi/cli.py"] }]
+"area: security-rls":
+  - changed-files: [{ any-glob-to-any-file: ["openbi/service/security.py", "openbi/service/api.py"] }]
+"area: embedding":
+  - changed-files: [{ any-glob-to-any-file: ["openbi/web/static/openbi-embed.js", "openbi/web/static/js/embed-host.js", "openbi/web/static/embed*.html", "docs/embedding.md"] }]
+"area: packaging":
+  - changed-files: [{ any-glob-to-any-file: ["packaging/**", "Dockerfile", "pyproject.toml"] }]
+"area: ci":
+  - changed-files: [{ any-glob-to-any-file: [".github/**"] }]
+"area: docs":
+  - changed-files: [{ any-glob-to-any-file: ["docs/**", "README.md"] }]
+"area: tests":
+  - changed-files: [{ any-glob-to-any-file: ["tests/**"] }]
+dependencies:
+  - changed-files: [{ any-glob-to-any-file: ["openbi/web/static/vendor/**"] }]

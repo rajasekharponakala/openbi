@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenBI business intelligence service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=openbi
+Group=openbi
+EnvironmentFile=-/etc/openbi/openbi.env
+ExecStart=/usr/bin/openbi serve --host ${OPENBI_BIND} --port ${OPENBI_PORT}
+Restart=on-failure
+WorkingDirectory=/var/lib/openbi
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/openbi
+
+[Install]
+WantedBy=multi-user.target

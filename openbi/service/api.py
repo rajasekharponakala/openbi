@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field, ValidationError
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from .. import __version__
 from ..dax.compiler import DaxError
 from ..engine.filters import FilterError
 from ..engine.query import QueryError, SemanticQuery, parse_select
@@ -749,7 +750,7 @@ def create_app(settings: Settings | None = None, start_scheduler: bool = True) -
         app.state.scheduler.shutdown()
 
     app = FastAPI(
-        title="OpenBI", version="0.1.0", description="Open-source business intelligence service", lifespan=lifespan
+        title="OpenBI", version=__version__, description="Open-source business intelligence service", lifespan=lifespan
     )
     app.state.settings = settings
     app.state.sessions = sessions

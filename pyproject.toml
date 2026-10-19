@@ -4,11 +4,34 @@ build-backend = "hatchling.build"
 
 [project]
 name = "openbi"
-version = "0.1.0"
-description = "Open-source business intelligence: semantic models, DAX measures, interactive reports, sharing and embedding"
+dynamic = ["version"]
+description = "Open-source business intelligence: Power Query-style data prep, DAX semantic models, interactive reports, row-level security, scheduled refresh and embedding"
 readme = "README.md"
 license = "AGPL-3.0-only"
 requires-python = ">=3.11"
+authors = [{ name = "OpenBI contributors" }]
+keywords = [
+  "business-intelligence", "bi", "analytics", "dashboards", "reporting", "dax", "semantic-layer",
+  "duckdb", "data-visualization", "power-bi-alternative", "embedded-analytics", "row-level-security",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Web Environment",
+  "Framework :: FastAPI",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: GNU Affero General Public License v3",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: JavaScript",
+  "Topic :: Database :: Front-Ends",
+  "Topic :: Office/Business",
+  "Topic :: Scientific/Engineering :: Visualization",
+]
 dependencies = [
   "duckdb>=1.2",            # columnar analytical engine (VertiPaq equivalent) + file/database connectors
   "sqlglot>=25",            # SQL parsing, quoting and validation
@@ -27,9 +50,19 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.5"]
+build = ["build>=1.2", "pyinstaller>=6.10"]
+
+[project.urls]
+Homepage = "https://github.com/rajasekharponakala/openbi"
+Documentation = "https://github.com/rajasekharponakala/openbi/tree/main/docs"
+Issues = "https://github.com/rajasekharponakala/openbi/issues"
+Source = "https://github.com/rajasekharponakala/openbi"
 
 [project.scripts]
 openbi = "openbi.cli:app"
+
+[tool.hatch.version]
+path = "openbi/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["openbi"]

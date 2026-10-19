@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://github.com/rajasekharponakala/openbi/tree/main/docs
+    about: How OpenBI works, supported DAX, project format and embedding
