@@ -94,7 +94,7 @@ jobs:
           /tmp/wheel-venv/bin/pip install dist/*.whl
           /tmp/wheel-venv/bin/openbi --version
           test -f "$(/tmp/wheel-venv/bin/python -c 'import openbi, pathlib; print(pathlib.Path(openbi.__file__).parent / "web/static/index.html")')"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: python-dist
           path: dist/*
@@ -159,13 +159,13 @@ jobs:
             tar czf "release/$name.tar.gz" "$name"
           fi
           ls -la release
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: bin-${{ matrix.target }}
           path: release/*
           if-no-files-found: error
       # raw binary for the .deb/.rpm and installer jobs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: raw-${{ matrix.target }}
           path: dist/${{ matrix.exe }}
@@ -197,7 +197,7 @@ jobs:
           Start-Process $setup.FullName -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES", "/CURRENTUSER", "/DIR=$env:RUNNER_TEMP\openbi" -Wait
           & "$env:RUNNER_TEMP\openbi\openbi.exe" --version
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: bin-windows-installer
           path: release/*-setup.exe
@@ -239,7 +239,7 @@ jobs:
           sudo -u openbi OPENBI_HOME=/var/lib/openbi openbi create-user ci@example.com --admin --password ci-password-123
           openbi --version
           sudo apt-get remove -y openbi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: bin-linux-packages-${{ matrix.arch }}
           path: release/*
