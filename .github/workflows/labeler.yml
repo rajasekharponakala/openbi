@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # labels are computed from changed paths only; no PR code is checked out or run
-      - uses: actions/labeler@v5
+      - uses: actions/labeler@v7
         with:
           sync-labels: false
