@@ -277,7 +277,7 @@ jobs:
             org.opencontainers.image.title=OpenBI
             org.opencontainers.image.description=Open-source business intelligence: data prep, DAX semantic models, interactive reports, RLS and embedding
             org.opencontainers.image.licenses=AGPL-3.0-only
-      - uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@v7
         with:
           context: .
           platforms: linux/amd64,linux/arm64
